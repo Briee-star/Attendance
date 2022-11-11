@@ -12,8 +12,7 @@
         //function to insert a new record into the attendee database
         public function insertAttendees($fname, $lname, $dob, $email, $contact, $specialty)
         {
-            try
-        {
+            try{
             //define sql statement to be executed
             $sql = "INSERT INTO attendee (firstname,lastname,dateofbirth,emailaddress,contactnumber,specialty_id) VALUES
              (:fname,:lname,:dob,:email,:contact,:specialty)";
@@ -113,5 +112,19 @@
             }
         }
 
+        public function getSpecialtyById($id){
+            try{
+                $sql = "SELECT * FROM `specialties` where specialty_id = :id"; 
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(':id', $id);
+                $stmt->execute();
+                $result = $stmt->fetch();
+                return $result;
+            }catch (PDOException $e) {
+                echo $e->getMessage();
+                return false; 
+                }
+            }
+    
     }
 ?>
