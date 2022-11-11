@@ -3,7 +3,6 @@ require'vendor/autoload.php';
 
 class SendEmail{
     public static function SendMail($to,$subject,$content){
-        $key = '';
 
         $email = new \SendGrid\Mail\Mail();
         $email->setFrom("Brittcam3@gmail.com", "Brittany Gayle");
