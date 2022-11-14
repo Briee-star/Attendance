@@ -4,6 +4,8 @@ require'vendor/autoload.php';
 class SendEmail{
     public static function SendMail($to,$subject,$content){
 
+        $key = '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';
+
         $email = new \SendGrid\Mail\Mail();
         $email->setFrom("Brittcam3@gmail.com", "Brittany Gayle");
         $email->setSubject($subject);

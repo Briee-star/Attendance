@@ -19,7 +19,7 @@
 
  <h1 class="text-center">Registration For IT Conference</h1>
 
-<form method="post" action="success.php">
+<form method="post" action="success.php" enctype="multipart/form-data">
   <div class="form-group">
         <label for="firstname">First Name</label>
         <input required type="text" class="form-control" id="firstname" name="firstname">
@@ -44,7 +44,6 @@
     </select>
     <br>
   </div>
-  <form>
   <div class="form-group">
     <label for="email">Email Address</label>
     <input required type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
@@ -57,10 +56,14 @@
     <small id="phoneHelp" class="form-text text-muted">We'll never share your number with anyone else.</small>
     <br>
   </div>
- 
+<br>
+<div class="input-group mb-3">
+  <input type="file" accept="image/*" class="form-control" id="avatar" name="avatar">
+  <label class="input-group-text" for="avatar">Browse</label>
+</div>
+
   <button type="submit" name="submit" class="btn btn-primary w-100 btn-block">Submit</button>
 </form>
-    <br>
     <br>
     <br>
     <br>

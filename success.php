@@ -14,12 +14,23 @@
         $email = $_POST['email'];
         $contact = $_POST['phone'];
         $specialty = $_POST['specialty'];
+
+        // TREVOIR TO BRITTANY: Review these next two lines and compare with the code I wrote. 
+        $orig_file = ($_FILES["avatar"]["tmp_name"]);
+        $ext = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
+        $target_dir = 'uploads/';
+        $destination = "$target_dir$contact.$ext";
+        move_uploaded_file($orig_file,$destination);
+
+    
+ 
         //Call function to insert and track if success or not
-        $isSuccess = $crud->insertAttendees($fname, $lname, $dob, $email, $contact, $specialty);
+        $isSuccess = $crud->insertAttendees($fname, $lname, $dob, $email, $contact, $specialty,$destination);
         $specialtyName = $crud->getSpecialtyById($specialty);
 
         if($isSuccess){
-            SendEmail::SendMail($email,'Welcome to IT Conference 2019','You have succesfully registered for this year\'s IT Conference');
+            SendEmail::SendMail($email,'Welcome to IT Conference 2019','You have succesfully registered 
+            for this year\'s IT Conference');
             include 'includes/successmessage.php';
         }
         else{ 
@@ -51,7 +62,7 @@
 
         </div>
     </div> -->
-
+    <img src="<?php echo $destination; ?>" class="rounded-circle" style="width: 20%; height: 20%" />
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">
